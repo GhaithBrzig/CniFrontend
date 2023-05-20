@@ -4,33 +4,188 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm>
+            <form cForm [formGroup]="form" (ngSubmit)="submit()">
               <h1>Register</h1>
               <p class="text-medium-emphasis">Create your account</p>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
+                <input autoComplete="Lastname" cFormControl placeholder="Lastname" [(ngModel)]="technicien.nom" type="text" formControlName="nom" />
+
               </c-input-group>
+              <span
+                class="text-danger error-msg error-msg"
+                *ngIf="
+                          (form.controls['nom'].invalid &&
+                            form.controls['nom'].dirty) ||
+                          form.controls['nom'].touched
+                        "
+              >
+                        <span
+                          *ngIf="
+                            form.controls['nom'].hasError(
+                              'required'
+                            )
+                          "
+                          class="error"
+                        >Lastname is required !</span
+                        >
+                        <span
+                          *ngIf="
+                            form.controls['nom'].hasError(
+                              'minlength'
+                            )
+                          "
+                          class="error">Minimum length is 3 chars !</span>
+                        <span
+                          *ngIf="
+                            form.controls['nom'].hasError(
+                              'maxlength'
+                            )
+                          "
+                          class="error">Maximum length is 10 chars !</span>
+                      </span>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="Firstname" cFormControl placeholder="Firstname" [(ngModel)]="technicien.prenom" type="text" formControlName="prenom" />
+              </c-input-group>
+              <span
+                class="text-danger error-msg error-msg"
+                *ngIf="
+                          (form.controls['prenom'].invalid &&
+                            form.controls['prenom'].dirty) ||
+                          form.controls['prenom'].touched
+                        "
+              >
+                        <span
+                          *ngIf="
+                            form.controls['prenom'].hasError(
+                              'required'
+                            )
+                          "
+                          class="error"
+                        >Firstname is required</span
+                        >
+                        <span
+                          *ngIf="
+                            form.controls['prenom'].hasError(
+                              'minlength'
+                            )
+                          "
+                          class="error">Minimum length is 3 chars !</span>
+                        <span
+                          *ngIf="
+                            form.controls['prenom'].hasError(
+                              'maxlength'
+                            )
+                          "
+                          class="error">Maximum length is 7 chars !</span>
+                      </span>
               <c-input-group class="mb-3">
                 <span cInputGroupText>@</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
+                <input autoComplete="Email" cFormControl placeholder="Email" [(ngModel)]="technicien.email" type="email" formControlName="email"/>
               </c-input-group>
+              <span
+                class="text-danger error-msg error-msg"
+                *ngIf="
+                          (form.controls['email'].invalid &&
+                            form.controls['email'].dirty) ||
+                          form.controls['email'].touched
+                        "
+              >
+                        <span
+                          *ngIf="
+                            form.controls['email'].hasError(
+                              'required'
+                            )
+                          "
+                          class="error"
+                        >Email is required</span
+                        >
+                        <span
+                          *ngIf="
+                            form.controls['email'].hasError(
+                              'email'
+                            )
+                          "
+                          class="error">Email is invalid</span>
+
+                      </span>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
+                <input autoComplete="Username" cFormControl placeholder="Username" [(ngModel)]="technicien.username" type="text" formControlName="username"/>
               </c-input-group>
-              <c-input-group class="mb-4">
+              <span
+                class="text-danger error-msg error-msg"
+                *ngIf="
+                          (form.controls['username'].invalid &&
+                            form.controls['username'].dirty) ||
+                          form.controls['username'].touched
+                        "
+              >
+                        <span
+                          *ngIf="
+                            form.controls['username'].hasError(
+                              'required'
+                            )
+                          "
+                          class="error"
+                        >Username is required</span
+                        >
+                        <span
+                          *ngIf="
+                            form.controls['username'].hasError(
+                              'minlength'
+                            )
+                          "
+                          class="error">Minimum length is 4 chars !</span>
+                        <span
+                          *ngIf="
+                            form.controls['username'].hasError(
+                              'maxlength'
+                            )
+                          "
+                          class="error">Maximum length is 10 chars !</span>
+                      </span>
+              <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
+                <input autoComplete="Password" cFormControl placeholder="Password" [(ngModel)]="technicien.password" type="password" formControlName="password"/>
+
               </c-input-group>
+              <span
+                class="text-danger error-msg error-msg"
+                *ngIf="
+                          (form.controls['password'].invalid &&
+                            form.controls['password'].dirty) ||
+                          form.controls['password'].touched
+                        "
+              >
+                        <span
+                          *ngIf="
+                            form.controls['password'].hasError(
+                              'required'
+                            )
+                          "
+                          class="error"
+                        >Password is required</span
+                        >
+                        <span
+                          *ngIf="
+                            form.controls['password'].hasError(
+                              'minlength'
+                            )
+                          "
+                          class="error">Minimum length is 4 chars !</span>
+                      </span>
               <div class="d-grid">
-                <button cButton color="success">Create Account</button>
+                <button cButton color="success" type="submit" [disabled]="form.invalid">Create Account</button>
               </div>
             </form>
           </c-card-body>
