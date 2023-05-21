@@ -9,6 +9,7 @@ import { SelectComponent } from './select/select.component';
 import { ChecksRadiosComponent } from './checks-radios/checks-radios.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ValidationComponent } from './validation/validation.component';
+import { AddformuleComponent } from 'src/app/user/addformule/addformule.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,8 @@ const routes: Routes = [
         redirectTo: 'form-control'
       },
       {
-        path: 'form-control',
-        component: FormControlsComponent,
+        path: 'addFormule',
+        component: AddformuleComponent,
         data: {
           title: 'Form Control'
         }
