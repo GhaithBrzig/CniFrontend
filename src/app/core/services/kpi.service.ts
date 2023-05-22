@@ -14,8 +14,10 @@ export class KpiService {
   getKpis(): Observable<Kpi[]> {
     return this.http.get<Kpi[]>(this.apiUrl);
   }
-  getKpiById(id: number): Observable<Kpi> {
-    const url = `${this.apiUrl}/${id}`;
+  getKpiById(kpiIds:Number): Observable<Kpi> {
+    const url = `${this.apiUrl}/${kpiIds}`;
     return this.http.get<Kpi>(url);
   }
+ 
+  
 }

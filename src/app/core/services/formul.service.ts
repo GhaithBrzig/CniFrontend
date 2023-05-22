@@ -17,7 +17,7 @@ export class FormuleService {
 
   addFormule(formule: Formule): Observable<number> {
     return this.http.post<number>(`${this.baseUrl}/Formules/addFormules`, formule);
-  }
+  }  
 
   getFormuleById(id: number): Observable<Formule> {
     return this.http.get<Formule>(`${this.baseUrl}/Formules/display/detailequipe/${id}`);

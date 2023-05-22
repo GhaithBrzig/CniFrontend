@@ -13,14 +13,13 @@ import { Compteur } from 'src/app/core/model/compteur';
 })
 export class AddformuleComponent implements OnInit {
   formule: Formule = new Formule();
-  selectedKpi: any;
-  selectedCompteur: any;
-  toshow = '';
-  currentvalue = '';
+  selectedKpi: Kpi | null = null;
+  selectedCompteur: Compteur | null = null;
+  formuleInput: string = ''; // Declare the formuleInput property
   formules: Formule[] = [];
   kpis: Kpi[] = [];
+  compteurs: Compteur[] = [];
 
-  compteurs:Compteur[]=[];
 
   constructor(
     private formuleService: FormuleService,
@@ -29,6 +28,12 @@ export class AddformuleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.fetchKpis();
+    this.fetchCompteurs();
+    this.fetchAllFormules();
+  }
+
+  fetchKpis(): void {
     this.kpiService.getKpis().subscribe(
       (kpis) => {
         this.kpis = kpis;
@@ -38,15 +43,21 @@ export class AddformuleComponent implements OnInit {
         console.error('Error fetching kpis', error);
       }
     );
+  }
+
+  fetchCompteurs(): void {
     this.compteurService.getCompteurs().subscribe(
       (compteurs) => {
         this.compteurs = compteurs;
         console.log('Compteurs:', this.compteurs);
       },
       (error) => {
-        console.error('Error fetching kpis', error);
+        console.error('Error fetching compteurs', error);
       }
     );
+  }
+  
+  fetchAllFormules(): void {
     this.formuleService.getAllFormules().subscribe(
       (formules) => {
         this.formules = formules;
@@ -55,43 +66,54 @@ export class AddformuleComponent implements OnInit {
         console.error('Error fetching formules', error);
       }
     );
-    this.kpiService.getKpis().subscribe(
+  }
+
+  fetchKpisForFormules(): void {
+    const kpiId = this.formule.kpis.idk;
+    this.kpiService.getKpiById(kpiId).subscribe(
       (kpis) => {
-        this.kpis = kpis;
+        this.kpis = [kpis]; // Wrap the single Kpi object in an array
       },
       (error) => {
         console.error('Error fetching kpis', error);
       }
     );
+  }
+  getKpiName(kpi: Kpi): string {
+    return kpi ? kpi.nomKpi : '';
 
   }
-  fetchKpisForFormules(): void {
-    const kpiIds = this.formules.map((formule) => formule.kpis.idk);
-    this.kpiService.getKpiById(kpiIds).subscribe(
-      (kpis) => {
-        this.kpis = kpis;
-      },
-      (error) => {
-        console.error('Error fetching kpis', error);
-      }
-    );
-  }
+  
+  
   
 
   addFormule(): void {
-    this.formuleService.addFormule(this.formule).subscribe(
+    if (!this.selectedKpi || !this.selectedCompteur || !this.formuleInput) {
+      return; // Validation: Ensure required fields are selected/entered
+    }
+  
+    const formuleData: Formule = new Formule();
+    formuleData.nomFormule = this.formuleInput;
+    formuleData.kpis = new Kpi();
+    formuleData.kpis.nomKpi = this.selectedKpi.nomKpi;
+    formuleData.compteurs = new Compteur();
+    formuleData.compteurs.nomCompteur = this.selectedCompteur.nomCompteur;
+
+  
+    this.formuleService.addFormule(formuleData).subscribe(
       (response) => {
-        // Handle successful response
         console.log('Formula added successfully', response);
-        // Reset formule object or perform any other necessary operations
-        this.formule = new Formule();
+        // Reset form
+        this.formuleInput = '';
+        this.selectedKpi = null;
+        this.selectedCompteur = null;
       },
       (error) => {
-        // Handle error response
         console.error('Error adding formula', error);
       }
     );
   }
+  
 
   test() {
     alert('L"opération est ajoutée');
