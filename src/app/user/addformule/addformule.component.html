@@ -10,25 +10,26 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>RRC Setup Success Rate </td>
-              <td>〖RRCS_SR〗_other=〖RRCConnctionSuccess〗_other/〖RRCConnectionAttempt〗_other ×100%</td>
+            <tr *ngFor="let formule of formules">
+              <td>{{ getKpiName(formule.kpis) }}</td>
+              <td>{{ formule.nomFormule }}</td>
             </tr>
-            <tr>
-              <td>ERAB Setup Success Rate (All)</td>
-              <td>ERABS_SR(all)= ERABSetupSuccess/ERABSetupAttempt×100%</td>
-            </tr>
-            <!-- Ajouter un nouveau KPI ici -->
           </tbody>
         </table>
+        
       </div>
       <div class="col-md-6">
         <h3>Ajouter un KPI</h3>
         <form>
           <div class="form-group">
             <label for="nom-kpi">Nom du KPI</label>
-            <input type="text" >
+            <select [(ngModel)]="selectedKpi" class="form-control" id="nom-kpi">
+              <option value="">Choisir un KPI</option>
+              <option *ngFor="let kpi of kpis" [value]="kpi.nomKpi">{{ kpi.nomKpi }}</option>
+            </select>
           </div>
+          
+          
           <div class="form-group">
             <label for="formule">Formule</label>
             <div class="input-group">
@@ -49,37 +50,15 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="compteurs">Compteurs</label>
-            <select class="form-control" id="compteurs">
-              <option value="">Choisir un compteur</option>
-              <option >Service de tentative de connexion RRC</option>
-              <option >Service de réussite de la connexion RRC</option>
-              <option >RRCConnectionAttemptsignaling</option>
-              <option >RRCConnectionSuccesssignaling</option>
-              <option >RRCconnectionSuccess</option>
-              <option >RRCconnectionAttempt</option>
-              <option >ERABSetupAttempt</option>
-              <option >ERABSetupSuccess</option>
-              <option >VoIPERABSetupAttempt</option>
-              <option>VoIPERABSetupSuccess</option>
-              <option >RRCConnectionAttemptservice</option>
-              <option>RRCConnectionSuccessservice</option>
-              <option>S1SIGConnectionEstablishAttempt</option>
-              <option >S1SIGConnectionEstablishSuccess</option>
-              <option >ERABSetupAttempt</option>
-              <option >ERABSetupSuccess</option>
-              <option >S1SIGConnectionEstablishAttempt</option>
-              <option >VoIPERABAbnormalRelease</option>
-              <option >VoIPERABRelease</option>
-              <option>ERABAbnormalRelease</option>
-              <option>ERABRelease</option>
-              <option >ERABAbnormalReleaseOfAlwaysOnline</option>
-              
-
+            <label for="nom-kpi">Nom du Compteur</label>
+            <select [(ngModel)]="selectedCompteur" class="form-control" id="nom-kpi">
+              <option value="">Choisir un Compteur</option>
+              <option *ngFor="let cpt of compteurs" [value]="cpt.nomCompteur">{{ cpt.nomCompteur }}</option>
             </select>
-            
           </div>
-          <button (click)="test()" type="submit" class="btn btn-primary">Ajouter</button>
+          
+            
+          <button (click)="addFormule()" type="submit" class="btn btn-primary">Ajouter</button>
         </form>
       </div>
     </div>
