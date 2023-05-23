@@ -1,5 +1,5 @@
 export class Kpi {
-    idk: number;
-    nomKpi : string;
+    idKPI: number;
+    nomKPI : string;
     descKpi: string;
 }  

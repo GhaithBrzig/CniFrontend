@@ -1,5 +1,5 @@
 export class Compteur {
-    idc: number;
+    idCompteur: number;
     nomCompteur : string;
     descCompteur: string;
 }  

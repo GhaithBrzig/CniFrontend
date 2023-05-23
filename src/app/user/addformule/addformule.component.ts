@@ -1,6 +1,6 @@
 import { KpiService } from './../../core/services/kpi.service';
 import { CompteurService } from './../../core/services/compteur.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormuleService } from '../../core/services/formul.service';
 import { Formule } from 'src/app/core/model/formule';
 import { Kpi } from 'src/app/core/model/kpi';
@@ -12,19 +12,21 @@ import { Compteur } from 'src/app/core/model/compteur';
   styleUrls: ['./addformule.component.scss']
 })
 export class AddformuleComponent implements OnInit {
+
   formule: Formule = new Formule();
-  selectedKpi: Kpi | null = null;
-  selectedCompteur: Compteur | null = null;
+  selectedKpi!: any ;
+  selectedCompteur!: any;
   formuleInput: string = ''; // Declare the formuleInput property
+  formuleInputName: string = ''; // Declare the formuleInput property
   formules: Formule[] = [];
   kpis: Kpi[] = [];
   compteurs: Compteur[] = [];
 
-
   constructor(
     private formuleService: FormuleService,
     private compteurService: CompteurService,
-    private kpiService: KpiService
+    private kpiService: KpiService,
+    private cd: ChangeDetectorRef // Inject ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +47,15 @@ export class AddformuleComponent implements OnInit {
     );
   }
 
+  onKpiSelected() {
+    console.log(this.selectedKpi);
+  }
+
+  onchange(event: any) {
+    this.selectedKpi = event;
+    console.log(this.selectedKpi);
+  }
+
   fetchCompteurs(): void {
     this.compteurService.getCompteurs().subscribe(
       (compteurs) => {
@@ -56,11 +67,12 @@ export class AddformuleComponent implements OnInit {
       }
     );
   }
-  
+
   fetchAllFormules(): void {
     this.formuleService.getAllFormules().subscribe(
       (formules) => {
         this.formules = formules;
+        console.log(this.formules)
       },
       (error) => {
         console.error('Error fetching formules', error);
@@ -69,7 +81,7 @@ export class AddformuleComponent implements OnInit {
   }
 
   fetchKpisForFormules(): void {
-    const kpiId = this.formule.kpis.idk;
+    const kpiId = this.formule.kpis.idKPI;
     this.kpiService.getKpiById(kpiId).subscribe(
       (kpis) => {
         this.kpis = [kpis]; // Wrap the single Kpi object in an array
@@ -79,43 +91,43 @@ export class AddformuleComponent implements OnInit {
       }
     );
   }
-  getKpiName(kpi: Kpi): string {
-    return kpi ? kpi.nomKpi : '';
 
+  getKpiName(kpi: Kpi): string {
+    return kpi ? kpi.nomKPI : '';
   }
-  
-  
-  
 
   addFormule(): void {
-    if (!this.selectedKpi || !this.selectedCompteur || !this.formuleInput) {
-      return; // Validation: Ensure required fields are selected/entered
-    }
-  
     const formuleData: Formule = new Formule();
-    formuleData.nomFormule = this.formuleInput;
-    formuleData.kpis = new Kpi();
-    formuleData.kpis.nomKpi = this.selectedKpi.nomKpi;
-    formuleData.compteurs = new Compteur();
-    formuleData.compteurs.nomCompteur = this.selectedCompteur.nomCompteur;
+    formuleData.nomFormule = this.formuleInputName;
+    formuleData.descFormule = this.formuleInput;
 
-  
+    formuleData.kpis = new Kpi();
+    formuleData.kpis.idKPI = this.selectedKpi;
+    formuleData.compteurs = new Compteur();
+    formuleData.compteurs.idCompteur = this.selectedCompteur;
+
     this.formuleService.addFormule(formuleData).subscribe(
       (response) => {
         console.log('Formula added successfully', response);
         // Reset form
         this.formuleInput = '';
+        this.formuleInputName = '';
         this.selectedKpi = null;
         this.selectedCompteur = null;
+        this.fetchAllFormules(); // Fetch all formules again to update the view
+        this.cd.detectChanges(); // Detect changes in the view
       },
       (error) => {
         console.error('Error adding formula', error);
       }
     );
   }
-  
 
   test() {
     alert('L"opération est ajoutée');
+  }
+
+  onButtonClick(symbol: string) {
+    this.formuleInput += symbol;
   }
 }
