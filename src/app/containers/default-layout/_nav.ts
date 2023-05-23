@@ -126,8 +126,8 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-notes' },
     children: [
       {
-        name: 'Form Control',
-        url: '/forms/form-control'
+        name: '4G / LTE',
+        url: '/forms/addFormule'
       },
       {
         name: 'Select',

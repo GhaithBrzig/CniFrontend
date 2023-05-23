@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Liste des KPIs et leurs formules</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>KPI</th>
+              <th>Nom Formule</th>
+              <th>Description Formule</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let formule of formules">
+              <td>{{ formule.kpis.nomKPI }}</td>
+              <td>{{ formule.nomFormule }}</td>
+              <td>{{ formule.descFormule }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="col-md-6">
+        <h3>Ajouter une formule : </h3>
+        <form>
+          <div class="form-group">
+            <label for="nom-kpi">Nom du KPI:</label>
+            <select class="form-control" id="nom-kpi" [(ngModel)]="selectedKpi" [ngModelOptions]="{standalone: true}" (change)="onchange(selectedKpi)">
+              <option [value]="null">Choose a KPI</option>
+              <option *ngFor="let kpi of kpis" [value]="kpi.idKPI">{{kpi.nomKPI}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+
+            <div class="form-group">
+              <label for="formuleName">Formule Name:</label>
+              <input type="text" class="form-control" id="formuleName" [(ngModel)]="formuleInputName" [ngModelOptions]="{standalone: true}">
+            </div>
+
+            <div class="form-group">
+              <label for="formuleDescription">Formule Description:</label>
+              <input type="text" class="form-control" id="formuleDescription" [(ngModel)]="formuleInput" [ngModelOptions]="{standalone: true}">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <div class="btn-group">
+                  <button class="btn btn-outline-secondary" type="button" (click)="onButtonClick('+')">+</button>
+                  <button class="btn btn-outline-secondary" type="button" (click)="onButtonClick('-')">-</button>
+                  <button class="btn btn-outline-secondary" type="button" (click)="onButtonClick('*')">*</button>
+                  <button class="btn btn-outline-secondary" type="button" (click)="onButtonClick('/')">/</button>
+                  <button class="btn btn-outline-secondary" type="button" (click)="onButtonClick('(')">(</button>
+                  <button class="btn btn-outline-secondary" type="button" (click)="onButtonClick(')')">)</button>
+                  <button class="btn btn-outline-secondary" type="button" (click)="onButtonClick('&#x2211;')">&#x2211;</button>
+                  <button class="btn btn-outline-secondary" type="button" (click)="onButtonClick('&#x220F;')">&#x220F;</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group">
+              <label for="nom-compteur">Nom du Compteur:</label>
+              <select class="form-control" id="nom-compteur" [(ngModel)]="selectedCompteur" [ngModelOptions]="{standalone: true}">
+                <option [ngValue]="null">Choisir un Compteur</option>
+                <option *ngFor="let cpt of compteurs" [value]="cpt.idCompteur">{{ cpt.nomCompteur }}</option>
+              </select>
+            </div>
+          <br>
+            <button class="btn btn-primary" (click)="addFormule()">Ajouter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
