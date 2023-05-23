@@ -1,5 +1,9 @@
 import { INavData } from '@coreui/angular';
 
+
+
+const userRole = localStorage.getItem('role');
+
 export const navItems: INavData[] = [
   {
     name: 'Dashboard',
@@ -28,11 +32,6 @@ export const navItems: INavData[] = [
   {
     name: 'Components',
     title: true
-  },
-  {
-    name: 'Techniciens',
-    url: '/admin/techniciens',
-    iconComponent: { name: 'cil-puzzle' },
   },
   {
     name: 'Base',
@@ -247,3 +246,12 @@ export const navItems: INavData[] = [
     ]
   },
 ];
+
+if (userRole === 'ADMIN') {
+  navItems.push({
+    name: 'Techniciens',
+    url: '/admin/techniciens',
+    iconComponent: { name: 'cil-puzzle' },
+  });
+}
+
