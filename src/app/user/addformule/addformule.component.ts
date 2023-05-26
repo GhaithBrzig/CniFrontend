@@ -5,6 +5,7 @@ import { FormuleService } from '../../core/services/formul.service';
 import { Formule } from 'src/app/core/model/formule';
 import { Kpi } from 'src/app/core/model/kpi';
 import { Compteur } from 'src/app/core/model/compteur';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-addformule',
@@ -21,18 +22,25 @@ export class AddformuleComponent implements OnInit {
   formules: Formule[] = [];
   kpis: Kpi[] = [];
   compteurs: Compteur[] = [];
+  fileToUpload: File | null = null;
+
 
   constructor(
     private formuleService: FormuleService,
     private compteurService: CompteurService,
     private kpiService: KpiService,
-    private cd: ChangeDetectorRef // Inject ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private http:HttpClient // Inject ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.fetchKpis();
     this.fetchCompteurs();
     this.fetchAllFormules();
+  }
+
+  onFileSelected(event: any): void {
+    this.fileToUpload = event.target.files[0];
   }
 
   fetchKpis(): void {
@@ -45,6 +53,23 @@ export class AddformuleComponent implements OnInit {
         console.error('Error fetching kpis', error);
       }
     );
+  }
+
+  uploadCsv(): void {
+    if (this.fileToUpload) {
+      const formData: FormData = new FormData();
+      formData.append('file', this.fileToUpload);
+
+      this.http.post('http://localhost:8082/SpringMVC/CSV/upload', formData)
+        .subscribe(
+          () => {
+            console.log('CSV file uploaded successfully');
+          },
+          (error) => {
+            console.error('Error uploading CSV file:', error);
+          }
+        );
+    }
   }
 
   onKpiSelected() {
