@@ -247,11 +247,6 @@ export const navItems: INavData[] = [
   },
 ];
 
-if (userRole === 'ADMIN') {
-  navItems.push({
-    name: 'Techniciens',
-    url: '/admin/techniciens',
-    iconComponent: { name: 'cil-puzzle' },
-  });
-}
+
+
 
