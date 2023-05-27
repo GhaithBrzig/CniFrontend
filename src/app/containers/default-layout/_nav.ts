@@ -125,6 +125,10 @@ export const navItems: INavData[] = [
         url: '/forms/addFormule'
       },
       {
+        name: 'Upload CSV file',
+        url: '/forms/uploadcsv'
+      },
+      {
         name: 'Select',
         url: '/forms/select'
       },

@@ -22,7 +22,6 @@ export class AddformuleComponent implements OnInit {
   formules: Formule[] = [];
   kpis: Kpi[] = [];
   compteurs: Compteur[] = [];
-  fileToUpload: File | null = null;
 
 
   constructor(
@@ -39,9 +38,7 @@ export class AddformuleComponent implements OnInit {
     this.fetchAllFormules();
   }
 
-  onFileSelected(event: any): void {
-    this.fileToUpload = event.target.files[0];
-  }
+ 
 
   fetchKpis(): void {
     this.kpiService.getKpis().subscribe(
@@ -55,35 +52,7 @@ export class AddformuleComponent implements OnInit {
     );
   }
 
-  uploadCsv(): void {
-    Swal.fire({
-      title: 'Are you sure you want to upload this file',
-      text: 'This action cannot be undone.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, upload',
-    }).then((result) => {
-      
-      if (this.fileToUpload) {
-        const formData: FormData = new FormData();
-        formData.append('file', this.fileToUpload);
-  
-        this.http.post('http://localhost:8082/SpringMVC/product/upload', formData)
-          .subscribe(
-            () => {
-              console.log('CSV file uploaded successfully');
-              Swal.fire('Uploaded', 'Csv file uploaded successfully.', 'success');
-            },
-            (error) => {
-              console.error('Error uploading CSV file:', error);
-            }
-          );
-      }
-    });
-   
-  }
+
 
   onKpiSelected() {
     console.log(this.selectedKpi);
