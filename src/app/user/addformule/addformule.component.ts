@@ -6,7 +6,7 @@ import { Formule } from 'src/app/core/model/formule';
 import { Kpi } from 'src/app/core/model/kpi';
 import { Compteur } from 'src/app/core/model/compteur';
 import { HttpClient } from '@angular/common/http';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-addformule',
   templateUrl: './addformule.component.html',
@@ -56,20 +56,33 @@ export class AddformuleComponent implements OnInit {
   }
 
   uploadCsv(): void {
-    if (this.fileToUpload) {
-      const formData: FormData = new FormData();
-      formData.append('file', this.fileToUpload);
-
-      this.http.post('http://localhost:8082/SpringMVC/CSV/upload', formData)
-        .subscribe(
-          () => {
-            console.log('CSV file uploaded successfully');
-          },
-          (error) => {
-            console.error('Error uploading CSV file:', error);
-          }
-        );
-    }
+    Swal.fire({
+      title: 'Are you sure you want to upload this file',
+      text: 'This action cannot be undone.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, upload',
+    }).then((result) => {
+      
+      if (this.fileToUpload) {
+        const formData: FormData = new FormData();
+        formData.append('file', this.fileToUpload);
+  
+        this.http.post('http://localhost:8082/SpringMVC/product/upload', formData)
+          .subscribe(
+            () => {
+              console.log('CSV file uploaded successfully');
+              Swal.fire('Uploaded', 'Csv file uploaded successfully.', 'success');
+            },
+            (error) => {
+              console.error('Error uploading CSV file:', error);
+            }
+          );
+      }
+    });
+   
   }
 
   onKpiSelected() {
