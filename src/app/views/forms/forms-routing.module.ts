@@ -10,6 +10,7 @@ import { ChecksRadiosComponent } from './checks-radios/checks-radios.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ValidationComponent } from './validation/validation.component';
 import { AddformuleComponent } from 'src/app/user/addformule/addformule.component';
+import { UploadcsvComponent } from 'src/app/user/uploadcsv/uploadcsv.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,13 @@ const routes: Routes = [
       {
         path: 'addFormule',
         component: AddformuleComponent,
+        data: {
+          title: 'Form Control'
+        }
+      },
+      {
+        path: 'uploadcsv',
+        component: UploadcsvComponent,
         data: {
           title: 'Form Control'
         }

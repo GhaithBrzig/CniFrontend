@@ -22,6 +22,10 @@ export const navItems: INavData[] = [
         name: '4G / LTE',
         url: '/forms/addFormule'
       },
+      {
+        name: 'Upload CSV file',
+        url: '/forms/uploadcsv'
+      },
 
     ]
   },
