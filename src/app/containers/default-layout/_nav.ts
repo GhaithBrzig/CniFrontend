@@ -5,15 +5,7 @@ import { INavData } from '@coreui/angular';
 const userRole = localStorage.getItem('role');
 
 export const navItems: INavData[] = [
-  {
-    name: 'Dashboard',
-    url: '/dashboard',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'info',
-      text: 'NEW'
-    }
-  },
+
 
   {
     name: 'Components',

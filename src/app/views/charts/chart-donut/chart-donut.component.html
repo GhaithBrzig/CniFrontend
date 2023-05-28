@@ -1,0 +1,90 @@
+<div class="kpi-analysis">
+  <h2 class="kpi-title">KPI Analysis - 4G</h2>
+
+  <div class="circle-progress-container">
+    <circle-progress class="circle-progress"
+                     [percent]="averageUsers"
+                     [animation]="true"
+                     [animationDuration]="300"
+                     [startFromZero]="true"
+                     [showInnerStroke]="true"
+                     [titleFontSize]="'28'"
+                     [titleFontWeight]="'900'"
+                     [unitsFontSize]="'28'"
+                     [unitsFontWeight]="'900'"
+                     [subtitle]="'Average Users'"
+                     [subtitleFontSize]="'12'"
+                     [lazy]="false"
+    ></circle-progress>
+
+    <circle-progress class="circle-progress"
+                     [percent]="integrity"
+                     [animation]="true"
+                     [animationDuration]="300"
+                     [startFromZero]="true"
+                     [showInnerStroke]="true"
+                     [titleFontSize]="'28'"
+                     [titleFontWeight]="'900'"
+                     [unitsFontSize]="'28'"
+                     [unitsFontWeight]="'900'"
+                     [subtitle]="'Integrity'"
+                     [subtitleFontSize]="'12'"
+                     [lazy]="false"
+    ></circle-progress>
+
+    <circle-progress class="circle-progress"
+                     [percent]="retainability"
+                     [animation]="true"
+                     [animationDuration]="300"
+                     [startFromZero]="true"
+                     [showInnerStroke]="true"
+                     [titleFontSize]="'28'"
+                     [titleFontWeight]="'900'"
+                     [unitsFontSize]="'28'"
+                     [unitsFontWeight]="'900'"
+                     [subtitle]="'Retainability'"
+                     [subtitleFontSize]="'12'"
+                     [lazy]="false"
+    ></circle-progress>
+
+    <circle-progress class="circle-progress"
+                     [percent]="mobility"
+                     [animation]="true"
+                     [animationDuration]="300"
+                     [startFromZero]="true"
+                     [showInnerStroke]="true"
+                     [titleFontSize]="'28'"
+                     [titleFontWeight]="'900'"
+                     [unitsFontSize]="'28'"
+                     [unitsFontWeight]="'900'"
+                     [subtitle]="'Mobility'"
+                     [subtitleFontSize]="'12'"
+                     [lazy]="false"
+    ></circle-progress>
+
+    <circle-progress class="circle-progress"
+                     [percent]="accessability"
+                     [animation]="true"
+                     [animationDuration]="300"
+                     [startFromZero]="true"
+                     [showInnerStroke]="true"
+                     [titleFontSize]="'28'"
+                     [titleFontWeight]="'900'"
+                     [unitsFontSize]="'28'"
+                     [unitsFontWeight]="'900'"
+                     [subtitle]="'Accessibility'"
+                     [subtitleFontSize]="'12'"
+                     [lazy]="false"
+    ></circle-progress>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<select [(ngModel)]="selectedCellName" (change)="filterDataCsv()" class="select-input">
+  <option value="" selected>All</option>
+  <option *ngFor="let name of cellNames" [value]="name">{{ name }}</option>
+</select>

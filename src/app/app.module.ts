@@ -51,6 +51,7 @@ import {AdminModule} from "./admin/admin.module";
 import {DashboardModule} from "./views/dashboard/dashboard.module";
 import {PagesModule} from "./views/pages/pages.module";
 import {HttpClientModule} from "@angular/common/http";
+import {NgCircleProgressModule} from "ng-circle-progress";
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -97,7 +98,22 @@ const APP_CONTAINERS = [
     DashboardModule,
     PagesModule,
     HttpClientModule,
-    ChartModule
+    ChartModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      backgroundColor: "teal",
+      backgroundPadding: 8,
+      radius: 60,
+      space: -15,
+      maxPercent: 100,
+      unitsColor: "#ffffff",
+      outerStrokeWidth: 7.5,
+      outerStrokeColor: "white",
+      innerStrokeColor: "teal",
+      innerStrokeWidth: 3,
+      titleColor: "#ffffff",
+      subtitleColor: "#ffffff"
+    })
   ],
   providers: [
     {
