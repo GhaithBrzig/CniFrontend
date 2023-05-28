@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
+import {CsvService} from "../../core/services/csv.service";
+import {CsvFile} from "../../core/model/csvfile";
 
 interface IUser {
   name: string;
@@ -22,6 +24,8 @@ interface IUser {
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+
   constructor(private chartsData: DashboardChartsData) {
   }
 
@@ -112,6 +116,7 @@ export class DashboardComponent implements OnInit {
   });
 
   ngOnInit(): void {
+
     this.initCharts();
   }
 
