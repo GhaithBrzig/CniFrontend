@@ -3,7 +3,8 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { ChartModule } from '@syncfusion/ej2-angular-charts';
+import { CategoryService, LegendService, TooltipService, DataLabelService, LineSeriesService} from '@syncfusion/ej2-angular-charts';
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
@@ -41,7 +42,7 @@ import {
   SharedModule,
   SidebarModule,
   TabsModule,
-  UtilitiesModule,
+  UtilitiesModule
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -50,6 +51,7 @@ import {AdminModule} from "./admin/admin.module";
 import {DashboardModule} from "./views/dashboard/dashboard.module";
 import {PagesModule} from "./views/pages/pages.module";
 import {HttpClientModule} from "@angular/common/http";
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -94,7 +96,8 @@ const APP_CONTAINERS = [
     AdminModule,
     DashboardModule,
     PagesModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartModule
   ],
   providers: [
     {
@@ -106,7 +109,8 @@ const APP_CONTAINERS = [
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
     IconSetService,
-    Title
+    Title,
+    CategoryService, LegendService, TooltipService, DataLabelService, LineSeriesService
   ],
   bootstrap: [AppComponent],
 })
