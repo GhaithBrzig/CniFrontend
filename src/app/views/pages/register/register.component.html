@@ -11,7 +11,7 @@
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="Lastname" cFormControl placeholder="Lastname" [(ngModel)]="technicien.nom" type="text" formControlName="nom" />
+                <input autoComplete="Lastname" cFormControl placeholder="Lastname" [(ngModel)]="client.nom" type="text" formControlName="nom" />
 
               </c-input-group>
               <span
@@ -50,7 +50,7 @@
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="Firstname" cFormControl placeholder="Firstname" [(ngModel)]="technicien.prenom" type="text" formControlName="prenom" />
+                <input autoComplete="Firstname" cFormControl placeholder="Firstname" [(ngModel)]="client.prenom" type="text" formControlName="prenom" />
               </c-input-group>
               <span
                 class="text-danger error-msg error-msg"
@@ -86,7 +86,7 @@
                       </span>
               <c-input-group class="mb-3">
                 <span cInputGroupText>@</span>
-                <input autoComplete="Email" cFormControl placeholder="Email" [(ngModel)]="technicien.email" type="email" formControlName="email"/>
+                <input autoComplete="Email" cFormControl placeholder="Email" [(ngModel)]="client.email" type="email" formControlName="email"/>
               </c-input-group>
               <span
                 class="text-danger error-msg error-msg"
@@ -118,7 +118,7 @@
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="Username" cFormControl placeholder="Username" [(ngModel)]="technicien.username" type="text" formControlName="username"/>
+                <input autoComplete="Username" cFormControl placeholder="Username" [(ngModel)]="client.username" type="text" formControlName="username"/>
               </c-input-group>
               <span
                 class="text-danger error-msg error-msg"
@@ -156,7 +156,7 @@
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="Password" cFormControl placeholder="Password" [(ngModel)]="technicien.password" type="password" formControlName="password"/>
+                <input autoComplete="Password" cFormControl placeholder="Password" [(ngModel)]="client.password" type="password" formControlName="password"/>
 
               </c-input-group>
               <span

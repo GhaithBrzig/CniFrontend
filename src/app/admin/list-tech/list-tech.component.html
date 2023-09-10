@@ -10,14 +10,14 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let technicien of techniciens; let i = index">
-    <th class="align-middle" scope="row">{{ technicien.idTechnicien }}</th>
-    <td class="align-middle">{{ technicien.nom }}</td>
-    <td class="align-middle">{{ technicien.prenom }}</td>
-    <td class="align-middle">{{ technicien.username }}</td>
-    <td class="align-middle">{{ technicien.email }}</td>
+  <tr *ngFor="let c of clients; let i = index">
+    <th class="align-middle" scope="row">{{ c.idClient }}</th>
+    <td class="align-middle">{{ c.nom }}</td>
+    <td class="align-middle">{{ c.prenom }}</td>
+    <td class="align-middle">{{ c.username }}</td>
+    <td class="align-middle">{{ c.email }}</td>
     <td class="align-middle">
-      <button type="button" class="btn btn-danger" (click)="deleteUser(technicien.idTechnicien, i)">
+      <button type="button" class="btn btn-danger" (click)="deleteUser(c.idClient, i)">
         Delete
       </button>
     </td>

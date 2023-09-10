@@ -22,7 +22,7 @@ const routes: Routes = [{
           import('../views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
-        path: 'techniciens',
+        path: 'clients',
         component: ListTechComponent
       },
       {

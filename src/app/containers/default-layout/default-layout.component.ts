@@ -28,19 +28,19 @@ export class DefaultLayoutComponent implements OnInit {
       next: (role) => {
         this.role = role;
         if (this.role === 'ADMIN') {
-          const techniciensButton = {
-            name: 'Techniciens',
-            url: '/admin/techniciens',
+          const clientsButton = {
+            name: 'Clients',
+            url: '/admin/clients',
             iconComponent: { name: 'cil-puzzle' },
           };
 
           const existingButtonIndex = this.navItems.findIndex(
             // @ts-ignore
-            (item) => item.name === techniciensButton.name
+            (item) => item.name === clientsButton.name
           );
           if (existingButtonIndex === -1) {
             // @ts-ignore
-            this.navItems.push(techniciensButton);
+            this.navItems.push(clientsButton);
             this.storeNavItems(); // Store updated navItems in local storage
           }
         }

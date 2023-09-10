@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class CrudsService {
 
-  public url = 'http://localhost:8082/SpringMVC/technicien';
+  public url = 'http://localhost:8082/SpringMVC/client';
 
   constructor(private http: HttpClient) { }
 

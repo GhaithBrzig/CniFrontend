@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Technicien} from "../../core/model/technicien";
+import {Client} from "../../core/model/client";
 import {CrudsService} from "../../core/services/cruds.service";
 import Swal from 'sweetalert2'
 @Component({
@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
   styleUrls: ['./list-tech.component.scss']
 })
 export class ListTechComponent implements OnInit{
-  public techniciens: Technicien[];
+  public clients: Client[];
 
   constructor(
     private crudsService : CrudsService,
@@ -16,8 +16,8 @@ export class ListTechComponent implements OnInit{
   ngOnInit(): void {
     this.crudsService.getAll().subscribe({
       next : (params) => {
-        this.techniciens = params;
-        console.log(this.techniciens)
+        this.clients = params;
+        console.log(this.clients)
       },
       error: (error)=>{
         console.log(error);
@@ -30,7 +30,7 @@ export class ListTechComponent implements OnInit{
 
   deleteUser(id: any, i: number) {
     Swal.fire({
-      title: 'Are you sure you want to delete this technicien?',
+      title: 'Are you sure you want to delete this client?',
       text: 'This action cannot be undone.',
       icon: 'warning',
       showCancelButton: true,
@@ -41,7 +41,7 @@ export class ListTechComponent implements OnInit{
       this.crudsService.delete(id).subscribe({
         next: (params) => {
           // Remove the element at index 'i' from the array
-          this.techniciens.splice(i, 1);
+          this.clients.splice(i, 1);
         },
         error: (error) => {
           console.log(error);

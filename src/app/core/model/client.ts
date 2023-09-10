@@ -1,5 +1,5 @@
-export class Technicien {
-    idTechnicien!: number;
+export class Client {
+    idClient!: number;
     prenom!: string;
     nom!: string;
 

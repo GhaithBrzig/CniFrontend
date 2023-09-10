@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Technicien } from '../model/technicien';
+import { Client } from '../model/client';
 import {Router} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
 
@@ -27,7 +27,7 @@ export class AuthenticationService {
           if(this.response == "ADMIN"){
             this.router.navigate(['/admin'])
           }
-          if(this.response == "TECHNICIEN"){
+          if(this.response == "CLIENT"){
             this.router.navigate(['/user'])
           }
         }
@@ -35,7 +35,7 @@ export class AuthenticationService {
     );;
   }
 
-  register(user: Technicien){
+  register(user: Client){
     return this.http.post("http://localhost:8082/SpringMVC/user/registration", user, {headers:{skip:"true"}});
   }
 

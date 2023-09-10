@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Technicien} from "../../../core/model/technicien";
+import {Client} from "../../../core/model/client";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../../core/services/authentication.service";
 
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   public form: FormGroup;
   public action: String;
-  public technicien: Technicien;
+  public client: Client;
   constructor( private formBuilder: FormBuilder,
                private router: Router,
                private currentRoute: ActivatedRoute,
@@ -26,12 +26,12 @@ export class RegisterComponent implements OnInit {
       username: ['', [Validators.required, Validators.required]],
       password: ['', [Validators.required, Validators.minLength(4)]]
     });
-      this.technicien = new Technicien();
+      this.client = new Client();
     }
 
 
   submit() {
-      this.auth.register(this.technicien).subscribe({
+      this.auth.register(this.client).subscribe({
         next: () => {
           this.router.navigate(['login'])
         },
