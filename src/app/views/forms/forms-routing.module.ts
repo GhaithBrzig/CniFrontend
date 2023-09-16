@@ -11,6 +11,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { ValidationComponent } from './validation/validation.component';
 import { AddformuleComponent } from 'src/app/user/addformule/addformule.component';
 import { UploadcsvComponent } from 'src/app/user/uploadcsv/uploadcsv.component';
+import { PredictComponent } from 'src/app/user/predict/predict.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,13 @@ const routes: Routes = [
       {
         path: 'uploadcsv',
         component: UploadcsvComponent,
+        data: {
+          title: 'Form Control'
+        }
+      },
+      {
+        path: 'predict',
+        component: PredictComponent,
         data: {
           title: 'Form Control'
         }

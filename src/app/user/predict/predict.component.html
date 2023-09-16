@@ -1,0 +1,231 @@
+          
+<div class="container">
+<h2>Model deploiment</h2>
+          <form [formGroup]="myForm" >
+
+                <!-- app.component.html -->
+                  <div class="form-group">
+                    <label for="N">mois:</label>
+                    <input
+                      type="number"
+                      formControlName="mois"
+                      name="mois"
+                      class="form-control"
+                      step="1"
+                      required
+                    />
+                 
+                 
+                     
+                  </div>
+
+                  <div class="form-group">
+                    <label for="P">annee:</label>
+                    <input
+                      type="number"
+                      formControlName="annee"
+                      name="annee"
+                      class="form-control"
+                      step="1"
+                      required
+                    />
+                 
+                     
+                  </div>
+
+                  <div class="form-group">
+                    <label for="K">type_paie:</label>
+                    <input
+                      type="number"
+                      formControlName="type_paie"
+                      name="type_paie"
+                      class="form-control"
+                      step="1"
+                      required
+                    />
+                  
+                     
+                  </div>
+
+                  <div class="form-group">
+                    <label for="temperature">codind:</label>
+                    <input
+                      type="number"
+                      formControlName="codind"
+                      name="codind"
+                      class="form-control"
+                      step="0.1"
+                      required
+                    />
+                   
+                    
+                  </div>
+
+                  <div class="form-group">
+                    <label for="humidity">montant_ind:</label>
+                    <input
+                      type="number"
+                      formControlName="montant_ind"
+                      name="montant_ind"
+                      class="form-control"
+                      step="0.1"
+                      required
+                    />
+                   
+                   
+                  </div>
+                 
+                    <div class="form-group">
+                      <label for="ph">nature_ind:</label>
+                      <input
+                        type="number"
+                        formControlName="nature_ind"
+                        name="nature_ind"
+                        class="form-control"
+                        step="0.1"
+                        required
+                      />
+
+                      <div class="form-group">
+                        <label for="ph">cat</label>
+                        <input
+                          type="number"
+                          formControlName="cat"
+                          name="cat"
+                          class="form-control"
+                          step="0.1"
+                          required
+                        />
+
+                     </div>
+
+                     <div class="form-group">
+                      <label for="ph">corps</label>
+                      <input
+                        type="number"
+                        formControlName="corps"
+                        name="corps"
+                        class="form-control"
+                        step="0.1"
+                        required
+                      />
+
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="ph">indice</label>
+                        <input
+                          type="number"
+                          formControlName="indice"
+                          name="indice"
+                          class="form-control"
+                          step="0.1"
+                          required
+                        />
+
+                      </div>
+
+                      <div class="form-group">
+                        <label for="ph">echellon</label>
+                        <input
+                          type="number"
+                          formControlName="echellon"
+                          name="echellon"
+                          class="form-control"
+                          step="0.1"
+                          required
+                        />
+
+                      </div>
+
+                      <div class="form-group">
+                        <label for="ph">fonc</label>
+                        <input
+                          type="number"
+                          formControlName="fonc"
+                          name="fonc"
+                          class="form-control"
+                          step="0.1"
+                          required
+                        />
+
+                        </div>
+                        <div class="form-group">
+                          <label for="ph">sitfam</label>
+                          <input
+                            type="number"
+                            formControlName="sitfam"
+                            name="sitfam"
+                            class="form-control"
+                            step="0.1"
+                            required
+                          />
+
+                        </div>
+
+                        <div class="form-group">
+                          <label for="ph">sexe</label>
+                          <input
+                            type="number"
+                            formControlName="sexe"
+                            name="sexe"
+                            class="form-control"
+                            step="0.1"
+                            required
+                          />
+
+                          </div>
+
+                          <div class="form-group">
+                            <label for="ph">total_recrutements</label>
+                            <input
+                              type="number"
+                              formControlName="total_recrutements"
+                              name="total_recrutements"
+                              class="form-control"
+                              step="0.1"
+                              required
+                            />
+  
+                            </div>
+
+                        
+                        
+                    
+                    
+                  </div>
+
+                  <div class="form-group">
+                    <label for="rainfall">montant_ind_total:</label>
+                    <input
+                      type="number"
+                      formControlName="montant_ind_total"
+                      name="montant_ind_total"
+                      class="form-control"
+                      step="0.1"
+                      required
+                    />
+                  
+                    
+                  </div>
+
+                  <br />
+                 
+                      <button
+                      type="submit"
+                      [disabled]="!myForm.valid"
+                      (click)="submit()"
+                    >
+                      PREDICT
+                    </button>
+                
+                  
+                </form>
+              
+                <br />
+                <div *ngIf="showResult">
+                  <h3>Prediction result:</h3>
+                  <p>{{ predictionResult }}</p>
+                </div>
+              </div>
