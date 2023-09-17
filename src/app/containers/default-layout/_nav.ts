@@ -17,16 +17,15 @@ export const navItems: INavData[] = [
     name: 'Forms',
     url: '/forms',
     iconComponent: { name: 'cil-notes' },
-    children: [
-      // {
-      //   name: '4G / LTE',
-      //   url: '/forms/addFormule'
-      // },
+    children: [   
       {
         name: 'Upload CSV file',
         url: '/forms/uploadcsv'
       },
-
+      {
+        name: 'model deploiment',
+        url: '/forms/predict'
+      },
     ]
   },
   {
