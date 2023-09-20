@@ -54,6 +54,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgCircleProgressModule} from "ng-circle-progress";
 
 
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
