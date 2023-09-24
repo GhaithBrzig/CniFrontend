@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="chart">
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [yaxis]="chartOptions.yaxis"
+    [xaxis]="chartOptions.xaxis"
+    [labels]="chartOptions.labels"
+    [stroke]="chartOptions.stroke"
+    [title]="chartOptions.title"
+    [dataLabels]="chartOptions.dataLabels"
+    [fill]="chartOptions.fill"
+    [tooltip]="chartOptions.tooltip"
+  ></apx-chart>
+  <h6>Recutement by month</h6>
+  <apx-chart
+    [series]="chartAreaOptions.series"
+    [chart]="chartAreaOptions.chart"
+    [xaxis]="chartAreaOptions.xaxis"
+    [stroke]="chartAreaOptions.stroke"
+    [tooltip]="chartAreaOptions.tooltip"
+    [dataLabels]="chartAreaOptions.dataLabels"
+  ></apx-chart>
+</div>

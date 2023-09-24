@@ -17,7 +17,7 @@ export const navItems: INavData[] = [
     name: 'Forms',
     url: '/forms',
     iconComponent: { name: 'cil-notes' },
-    children: [   
+    children: [
       {
         name: 'Upload CSV file',
         url: '/forms/uploadcsv'
@@ -34,11 +34,15 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-chart-pie' },
     children: [
       {
-        name: 'line chart',
+        name: 'Indiv Amount charts',
         url: '/charts'
       },
       {
-        name: 'donut chart',
+        name: 'Recutement charts',
+        url: '/charts/Recut'
+      },
+      {
+        name: 'Mass Salariale charts',
         url: '/charts/Donut'
       },
 

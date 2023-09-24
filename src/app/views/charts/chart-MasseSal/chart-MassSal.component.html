@@ -1,0 +1,30 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="chart">
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [dataLabels]="chartOptions.dataLabels"
+    [markers]="chartOptions.markers"
+    [xaxis]="chartOptions.xaxis"
+    [yaxis]="chartOptions.yaxis"
+    [stroke]="chartOptions.stroke"
+    [title]="chartOptions.title"
+  ></apx-chart>
+<br>
+<br>
+<br>
+  <apx-chart
+    [series]="chartComboOptions.series"
+    [chart]="chartComboOptions.chart"
+    [dataLabels]="chartComboOptions.dataLabels"
+    [markers]="chartComboOptions.markers"
+    [xaxis]="chartComboOptions.xaxis"
+    [yaxis]="chartComboOptions.yaxis"
+    [stroke]="chartComboOptions.stroke"
+    [title]="chartComboOptions.title"
+    [colors]="chartComboOptions.colors"
+    [fill]="chartComboOptions.fill"
+    [forecastDataPoints]="chartComboOptions.forecastDataPoints"
+    [legend]="chartComboOptions.legend"
+  ></apx-chart>
+</div>
