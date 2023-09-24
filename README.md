@@ -1,2 +1,1 @@
-## PREDICT BRANCH
-## CNI Branch
+## CNI Project
